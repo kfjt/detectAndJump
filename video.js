@@ -4,7 +4,7 @@
 const video = document.querySelector('video');
 const constraints = window.constraints = {
   audio: false,
-  video: true
+  video: { facingMode: "environment" }
 };
 const errorElement = document.querySelector('#errorMsg');
 
