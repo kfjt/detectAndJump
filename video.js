@@ -5,7 +5,10 @@
 const video = document.querySelector('video');
 const constraints = window.constraints = {
   audio: false,
-  video: { facingMode: "environment" }
+  video: {
+    facingMode: "environment",
+    frameRate: { ideal: 10, max: 15 }
+  }
 };
 const errorElement = document.querySelector('#errorMsg');
 
