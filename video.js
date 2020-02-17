@@ -1,5 +1,6 @@
 'use strict';
 
+{
 // Put variables in global scope to make them available to the browser console.
 const video = document.querySelector('video');
 const constraints = window.constraints = {
@@ -39,4 +40,5 @@ function errorMsg(msg, error) {
   if (typeof error !== 'undefined') {
     console.error(error);
   }
+}
 }
