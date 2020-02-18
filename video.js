@@ -1,10 +1,9 @@
 'use strict';
 
 {
-// Put variables in global scope to make them available to the browser console.
 const video = document.querySelector('video');
-const infoMsg = document.querySelector('#infoMsg');
-infoMsg.innerHTML = 'hello'
+
+Msg.info = 'Initializing'
 
 const constraints = window.constraints = {
   audio: false,
@@ -13,40 +12,37 @@ const constraints = window.constraints = {
     frameRate: { ideal: 10, max: 15 }
   }
 };
-const errorElement = document.querySelector('#errorMsg');
+
+if (!confirm('This site uses a camera')) {
+  throw new Error('Permission required to use camera');
+}
 
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(stream) {
-  infoMsg.innerHTML = 'stream start'
+  Msg.info = 'stream start'
   const videoTracks = stream.getVideoTracks();
-  console.log('Got stream with constraints:', constraints);
-  console.log('Using video device: ' + videoTracks[0].label);
+  Msg.info = 'Got stream with constraints:', constraints;
+  Msg.info = 'Using video device: ' + videoTracks[0].label;
   stream.onremovetrack = function() {
-    console.log('Stream ended');
+    Msg.info = 'Stream ended';
   };
   window.stream = stream; // make variable available to browser console
   video.srcObject = stream;
   video.onloadedmetadata = function(e) {
-    infoMsg.innerHTML = 'playing video'
+    Msg.info = 'playing video'
     video.play();
   };
 })
 .catch(function(error) {
   if (error.name === 'ConstraintNotSatisfiedError') {
-    errorMsg('The resolution ' + constraints.video.width.exact + 'x' +
+    Msg.error('The resolution ' + constraints.video.width.exact + 'x' +
         constraints.video.width.exact + ' px is not supported by your device.');
   } else if (error.name === 'PermissionDeniedError') {
-    errorMsg('Permissions have not been granted to use your camera and ' +
+    Msg.error('Permissions have not been granted to use your camera and ' +
       'microphone, you need to allow the page access to your devices in ' +
       'order for the demo to work.');
   }
-  errorMsg('getUserMedia error: ' + error.name, error);
+  Msg.error= 'getUserMedia error: ' + error.name, error;
 });
 
-function errorMsg(msg, error) {
-  errorElement.innerHTML += '<p>' + msg + '</p>';
-  if (typeof error !== 'undefined') {
-    console.error(error);
-  }
-}
 }
