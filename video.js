@@ -3,6 +3,9 @@
 {
 // Put variables in global scope to make them available to the browser console.
 const video = document.querySelector('video');
+const infoMsg = document.querySelector('#infoMsg');
+infoMsg.innerHTML = 'hello'
+
 const constraints = window.constraints = {
   audio: false,
   video: {
@@ -14,6 +17,7 @@ const errorElement = document.querySelector('#errorMsg');
 
 navigator.mediaDevices.getUserMedia(constraints)
 .then(function(stream) {
+  infoMsg.innerHTML = 'stream start'
   const videoTracks = stream.getVideoTracks();
   console.log('Got stream with constraints:', constraints);
   console.log('Using video device: ' + videoTracks[0].label);
@@ -23,6 +27,7 @@ navigator.mediaDevices.getUserMedia(constraints)
   window.stream = stream; // make variable available to browser console
   video.srcObject = stream;
   video.onloadedmetadata = function(e) {
+    infoMsg.innerHTML = 'playing video'
     video.play();
   };
 })

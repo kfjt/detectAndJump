@@ -7,7 +7,7 @@ const classifyElement = document.querySelector('#classifyMsg');
 
 video.onplaying = (event) => {
     console.log('Video is no longer paused.');
-    infoMsg.innerHTML = 'now loading'
+    infoMsg.innerHTML = 'loading classify model'
     // Load the model.
     mobilenet.load().then(model => {
         // Classify the image.
