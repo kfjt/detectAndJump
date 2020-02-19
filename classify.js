@@ -1,8 +1,9 @@
 'use strict';
 {
+const video = document.querySelector('video');
 const canvas = document.querySelector('canvas');
 
-canvas.onplaying = (event) => {
+video.onplaying = (event) => {
     Msg.info = 'Video is no longer paused.';
     Msg.info = 'loading classify model'
     // Load the model.
