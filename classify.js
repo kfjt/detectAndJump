@@ -1,9 +1,8 @@
 'use strict';
 {
 const video = document.querySelector('video');
-// const canvas = document.querySelector('canvas');
 
-video.onplaying = (event) => {
+video.onplaying = () => {
     Msg.info = 'loading classify model'
     mobilenet.load().then(model => {
         Msg.info = 'loaded classify model'
@@ -13,7 +12,6 @@ video.onplaying = (event) => {
             video.pause();
             Msg.info = ''
             Msg.classify= queryword
-            // location.href = `https://www.google.com/search?q=${queryword}`;
         });
     });
 };
