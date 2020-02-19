@@ -4,11 +4,9 @@ const video = document.querySelector('video');
 const canvas = document.querySelector('canvas');
 
 video.onplaying = (event) => {
-    Msg.info = 'Video is no longer paused.';
     Msg.info = 'loading classify model'
-    // Load the model.
     mobilenet.load().then(model => {
-        // Classify the image.
+        Msg.info = 'loaded classify model'
         model.classify(canvas).then(predictions => {
             Msg.info = `Predictions: ${predictions}`;
             const queryword = predictions[0].className;

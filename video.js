@@ -28,6 +28,9 @@ video.addEventListener('loadedmetadata', () => {
   canvas.height = video.videoHeight;
   video.style.display = 'none';
 });
-video.addEventListener('loadedmetadata', video.play);
+video.addEventListener('loadedmetadata', () => {
+  Msg.info = 'video play'
+  video.play();
+});
 video.addEventListener('loadeddata', drawFrame)
 }
