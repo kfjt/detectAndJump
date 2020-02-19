@@ -12,7 +12,7 @@ if (!confirm('This site uses a camera')) {
 navigator.mediaDevices.getUserMedia({video: { facingMode: "environment" }})
 .then(stream => {
   Msg.info = 'stream start';
-  video.playsinline = true;
+  video.setAttribute('playsinline', '');
   video.srcObject = stream;
 })
 .catch(error => Msg.error = `getUserMedia error: ${error}`);
