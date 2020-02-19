@@ -25,8 +25,9 @@ navigator.mediaDevices.getUserMedia(constraints)
   window.stream = stream; // make variable available to browser console
   video.srcObject = stream;
   video.onloadedmetadata = function(e) {
-    Msg.info = 'playing video'
+    Msg.info = 'playing video ...'
     video.play();
+    Msg.info = 'playing video'
   };
 })
 .catch(function(error) {
