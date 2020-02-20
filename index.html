@@ -1,14 +1,22 @@
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet/dist/mobilenet.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"> </script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet/dist/mobilenet.min.js"></script> -->
+    <script async src="https://docs.opencv.org/4.2.0/opencv.js" id="opencvjs"></script>
 </head>
 <body>
     <div id="errorMsg"> </div>
     <div id="infoMsg"> </div>
     <div id="classifyMsg"> </div>
+
     <video> </video>
+
+    <canvas id="imageCanvasInput"></canvas>
+    <canvas id="templateCanvasInput"></canvas>
+    <canvas id="canvasOutput"></canvas>
+
     <script src="./message.js"></script>
+    <script src="./templateMatch.js"></script>
     <script src="./video.js"></script>
-    <script src="./classify.js"></script>
-    <script src="./hyperref.js"></script>
+    <!-- <script src="./classify.js"></script> -->
+    <!-- <script src="./hyperref.js"></script> -->
 </body>
